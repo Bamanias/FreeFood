@@ -1,0 +1,148 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+nav{
+    /*this makes sure the header does not move at all while u scroll down on the page*/
+    top: 8rem;/*places on top*/
+    width: 100%;
+    height: 6vh;
+    padding-top: 8px;
+    display: flex;
+    justify-content: space-around;
+    background: linear-gradient(to right, #287e15, #aad658);
+}
+
+.nav-links{
+    display: flex;
+    justify-content: space-around;/*makes sure there is space betwen each link*/
+    width: 50%;/*space between links specified*/
+    list-style: none;/*removes bullet point on headings*/
+    padding-top: 1vh;
+}
+
+.nav-links a{
+   color: white;
+   text-decoration: none; /*removes the underline under nav headings(hyperlinks)*/
+    
+}
+
+.nav-links a:hover{/*this acces when the mouse hover our the nav links*/
+    opacity: 0.7;/* allows link to be a darker colour when mouse is hoveing over the link*/
+    border-bottom: 2px solid white;
+    margin-bottom: 20px;
+}
+
+
+
+body{
+    font-family: 'Cormorant Garamond', serif;
+    text-align: center;
+    background-image: url("food.jpeg.jpg");
+    background-size: cover;
+}
+
+/* .home{
+    padding-top: 20%;
+}
+
+.butn {
+    background-color: rgb(47, 168, 47); /* Green 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 50%;
+    
+  }
+
+ */
+
+  .form-box{
+      width: 380px;
+      height: 480px;
+      position: relative;
+      margin: 6% auto;
+      background: #fff;
+      padding: 5px;
+      overflow: hidden; 
+  }
+
+  .button-box{
+      width: 220px;
+      margin:35px auto ;
+      position: relative;
+      box-shadow: 0 0 20px 9px #5fc2261f;
+      border-radius: 30px;
+  }
+  .toggle-btn{
+      padding: 10px 30px;
+      cursor: pointer;
+      background: transparent;
+      border: 0;
+      outline: none;
+      position: relative;
+
+    }
+#btn{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: linear-gradient(to right, #287e15, #aad658);
+    border-radius: 30px;
+    transition: 0.5s;
+}
+
+.input-group{
+    top: 180px;
+    position: absolute;
+    width: 280px;
+    transition: 0.5s;
+}
+.input-field{
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+}
+.submit-btn{
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right, #287e15, #aad658);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+
+.chech-box{
+    margin: 30px 10px 30px 0;
+}
+span{
+    color:#287e15;
+    font-size: 12px;
+    bottom: 68px;
+    position: static;
+}  
+
+#login{
+    left: 50px;
+}
+#signup{
+    left: 450px;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width-device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>FreeFood</title>
+    <link rel="stylesheet" href="freefoodcss.css">
+    <script src="Freefood.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel=" stylesheet"><!--allows me to acces search icon-->
+<head>
+    
+<nav>
+    <div class="nav-links">
+        <a href="FreeFood.html">HOME</a>
+        <a href="Upload.html">UPLOAD ITEM</a>
+        <a href="Jacket.html">PRODUCTS</a><!--creates nav link to internal page remeber # and then id name-->
+        <a href="About.html">ABOUT</a>
+        <a href="About.html">CONTACT</a>
+        <a href="About.html">MESSAGES</a>
+    </div>
+</nav>
+
+</head>
+
+
+<body>
+    <section>
+        <!-- <div class="home" id="home">
+            <button type="button" class="butn">Login</button>
+            <button type="button" class="btn2">Sign up</button>
+        </div> -->
+    </section>
+    
+    <div class="form-box">
+        <div class="button-box">
+            <div id = "btn"></div>
+            <button type="button" class="toggle-btn" onclick= Login()>Login</button>
+            <button type="button" class="toggle-btn" onclick= Signup()>Sign up</button>
+        </div>
+        <form id="login" class="input-group">
+            <input type="text" class="input-field" placeholder="Username" required>
+            <input type="text" class="input-field" placeholder="Enter Password" required>
+            <button type="submit" class="submit-btn">Log in</button>
+        </form>
+        <form id="signup" class="input-group">
+            <input type="text" class="input-field" id = "fullname" placeholder="Full Name" required>
+            <input type="text" class="input-field" id = "username" placeholder="Username" required>
+            <input type="text" class="input-field" id = "password"placeholder="Enter Password" required>
+            <input type="text" class="input-field" placeholder="Confirm Password" required>
+            <input type="checkbox" class="chech-box"><span>I agree to the terms & conditions</span>
+            <button type="submit" class="submit-btn" onclick= Sign_up()>Sign up</button>
+        </form>
+    </div>
+
+
+
+    <script>
+        var x = document.getElementById("login");
+        var y = document.getElementById("signup");
+        var z = document.getElementById("btn");
+
+        function Signup() {
+            x.style.left = "-400px";
+            y.style.left = "50px";
+            z.style.left = "110px";
+        }
+
+        function Login() {
+            x.style.left = "50px";
+            y.style.left = "450px";
+            z.style.left = "0px";   
+        }
+    </script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js";
+      </script>
+
+</body>
+</html>
