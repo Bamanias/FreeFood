@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width-device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>FreeFood</title>
+    <link rel="stylesheet" href="Upload.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel=" stylesheet"><!--allows me to acces search icon-->
+<head>
+    
+<nav>
+    <div class="nav-links">
+        <a href="FreeFood.html">HOME</a>
+        <a href="Upload.html">UPLOAD ITEM</a>
+        <a href="Jacket.html">PRODUCTS</a><!--creates nav link to internal page remeber # and then id name-->
+        <a href="About.html">ABOUT</a>
+        <a href="About.html">CONTACT</a>
+        <a href="About.html">MESSAGES</a>
+    </div>
+</nav>
+
+</head>
+
+
+<body>
+    <section>
+        <div class="upload" id="upload">
+            <h1>Upload an image from your file</h1>
+           <input type="file" name="inpFile" id="inpFile">
+           <div class="image-preview" id="imagePreview">
+                <img src="" alt="Image Preview" class="image-preview__image">
+                <span class="image-preview__default-text">Image Preview</span>
+            </div>
+        </div>
+        
+    </section>
+ 
+    <script>
+        const inpFile = document.getElementById('inpFile');
+        const previewContainer = document.getElementById('imagePreview');
+        const previewImage = previewContainer.querySelector('.image-preview__image');
+        const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
+
+        inpFile.addEventListener("change", function(){/*allows file chooser to open*/
+                const file = this.files[0];
+
+                if (file){
+                    const reader = new FileReader();
+
+                    previewDefaultText.style.display = 'none';
+                    previewImage.style.display = 'block';
+                    
+                    reader.addEventListener("load", function(){
+                        previewImage.setAttribute("src", this.result);
+                    });
+
+                    reader.readAsDataURL(file);
+                    
+                }else{/*if no file choosen*/
+                    previewDefaultText.style.display = null;
+                    previewImage.style.display = null;
+                    previewImage.setAttribute("src", "");
+                }
+
+        });
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+nav{
+    /*this makes sure the header does not move at all while u scroll down on the page*/
+    top: 8rem;/*places on top*/
+    width: 100%;
+    height: 6vh;
+    padding-top: 8px;
+    display: flex;
+    justify-content: space-around;
+    background: linear-gradient(to right, #287e15, #aad658);
+}
+
+.nav-links{
+    display: flex;
+    justify-content: space-around;/*makes sure there is space betwen each link*/
+    width: 50%;/*space between links specified*/
+    list-style: none;/*removes bullet point on headings*/
+    padding-top: 1vh;
+}
+
+.nav-links a{
+   color: white;
+   text-decoration: none; /*removes the underline under nav headings(hyperlinks)*/
+    
+}
+
+.nav-links a:hover{/*this acces when the mouse hover our the nav links*/
+    opacity: 0.7;/* allows link to be a darker colour when mouse is hoveing over the link*/
+    border-bottom: 2px solid white;
+    margin-bottom: 20px;
+}
+
+
+
+body{
+    font-family: 'Cormorant Garamond', serif;
+    
+    
+}
+
+body h1{
+    padding: 5%;
+    border-radius: 30px;
+    color: white;
+    background: linear-gradient(to right, #287e15, #aad658);
+    margin-bottom: 10%;
+}
+
+body input{
+    border-radius: 30px;
+    color: white;
+    background: linear-gradient(to right, #287e15, #aad658);
+    padding: 2px;
+}
+
+.image-preview{
+    width: 300px;
+    min-height:100px;
+    border: 2px solid #dddddd;
+    margin-top: 15px;
+    
+    /*defaukt text*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #cccccc;
+}
+
+.image-preview__image{/*displays the image preview text only once no repeat*/
+    display: none;
+    width: 100%;
+}
+
+.upload{
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 6% auto;
+    background: #fff;
+    padding: 5px;
+    overflow: hidden; 
+}
