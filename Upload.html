@@ -23,10 +23,9 @@
   <div class="form">
     <h1 id='status'>Upload</h1>
     <input type="text" id="foodName" name="foodName" placeholder="Name of food" />
-    <input type="text" id="email" name="email" placeholder="E-mail" />
-    <!-- <input type="number" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" /> -->
+    <input type="date" id="expiryDate" name="expiryDate" placeholder="Expiry Date" />
     <input type="text" id="description" name="description" placeholder="Description" />
-    <input type="string" id="phoneNumber" name="phoneNumber" placeholder="phoneNumber" />
+    <input type="string" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" />
     
     <input type="submit" id='upload' name="upload_submit" value="Upload" />
    
@@ -64,14 +63,14 @@
   upload.addEventListener('click',(e) => {
     var foodName = document.getElementById('foodName').value;
     var description = document.getElementById('description').value;
-    var email = document.getElementById('email').value;
+    var expiryDate = document.getElementById('expiryDate').value;
     var phoneNumber = document.getElementById('phoneNumber').value;    
 
     const userId = push(child(ref(database), 'food')).key;
    
     set(ref(database, 'food/' + userId), {
       foodName: foodName,
-      email: email,
+      expiryDate: expiryDate,
       description: description,
       phoneNumber: phoneNumber
    });

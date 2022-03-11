@@ -89,7 +89,8 @@ nav{
   }
   
   input[type="text"],
-  input[type="password"] {
+  input[type="string"],
+  input[type="date"]{
     display: block;
     box-sizing: border-box;
     margin-bottom: 20px;
@@ -104,8 +105,7 @@ nav{
     transition: 0.2s ease;
   }
   
-  input[type="text"]:focus,
-  input[type="password"]:focus {
+  input[type="text"]:focus {
     border-bottom: 2px solid #16a085;
     color: #16a085;
     transition: 0.2s ease;
