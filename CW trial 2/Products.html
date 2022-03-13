@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>Products </title>
+
+<link rel="stylesheet" href="Products.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+<nav>
+  <div class="nav-links">
+      <a href="signup.html">HOME</a>
+      <a href="Upload.html">UPLOAD ITEM</a>
+      <a href="Products.html">PRODUCTS</a><!--creates nav link to internal page remeber # and then id name-->
+      <a href="About.html">ABOUT</a>
+      <a href="#">MESSAGES</a>
+  </div>
+</nav>
+</head>
+
+<body>
+  <button type="submit" id="getData" class="btn btn-primary" style="border-color: #287e15; margin-top: 5%; margin-left: 40%; background: linear-gradient(to right, #287e15, #aad658 )">Search Products</button>
+
+<div class="col-md-6">
+<table class="table table-striped" id='dataTbl'>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Food name</th>
+      <th scope="col">Expiry Date</th>
+      <th scope="col">Description</th>
+      <th scope="col">Phone Number</th>
+    </tr>
+  </thead>
+</table>
+</div>
+
+
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+  import { getDatabase, set, ref ,push, child, onValue} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    // Your configaration code here
+    apiKey: "AIzaSyA_4frGWPgbRUiSVmQ0g9arpURi1xjbJQU",
+    authDomain: "food-b4a64.firebaseapp.com",
+    projectId: "food-b4a64",
+    storageBucket: "food-b4a64.appspot.com",
+    messagingSenderId: "767952938951",
+    appId: "1:767952938951:web:8772986cdfd53afb079be2"
+  };
+  
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  
+  // Get a reference to the database service
+  const database = getDatabase(app);
+
+  getData.addEventListener('click',(e) => {
+
+    $('#dataTbl td').remove();
+    var rowNum = 0; 
+    const dbRef = ref(database, 'food/');
+
+    onValue(dbRef, (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+      const childKey = childSnapshot.key;
+      const childData = childSnapshot.val();
+      // ...
+      rowNum += 1; 
+      var row = "<tr><td>" + rowNum + "</td><td>" + childData.foodName + "</td><td>" 
+        + childData.expiryDate + "</td><td>" 
+          + childData.description + "</td><td>" 
+            + childData.phoneNumber + "</td></tr>"
+
+      $(row).appendTo('#dataTbl');
+      
+      });
+    }, {
+       onlyOnce: true
+    });
+
+
+  });
+</script>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Firebase Authentication</title>
+<link rel="stylesheet" href="login.css">
+
+<nav>
+    <div class="nav-links">
+        <a href="signup.html">HOME</a>
+        <a href="Upload.html">UPLOAD ITEM</a>
+        <a href="Products">PRODUCTS</a><!--creates nav link to internal page remeber # and then id name-->
+        <a href="About.html">ABOUT</a>
+        <a href="#">MESSAGES</a>
+    </div>
+</nav>
+</head>
+
+<body>
+  
+<div id="login-box">
+  <div class="form">
+    <h1 id='status'>Log in</h1>
+  
+    <input type="text" id="email" name="email" placeholder="E-mail" />
+    <input type="password" id="password" name="password" placeholder="Password" />
+ 
+    <input type="submit" id='login' name="login" value="Login" />
+    <a href="signup.html" class="login_link">Don't have an Account?</a>
+
+  </div>
+  
+  
+</div>
+</body>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+    import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyC-iDfEWFuKGF30pOuW_-wWEBP6-mlZDng",
+      authDomain: "authentication-app-47677.firebaseapp.com",
+      databaseURL: "https://authentication-app-47677-default-rtdb.firebaseio.com",
+      projectId: "authentication-app-47677",
+      storageBucket: "authentication-app-47677.appspot.com",
+      messagingSenderId: "183968936040",
+      appId: "1:183968936040:web:090efac3dcaecc18794bdd"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
+
+//login user
+ document.getElementById("login").value;
+
+login.addEventListener('click',(e)=>{
+  var email_1 = document.getElementById('email').value;
+  var password_1 = document.getElementById('password').value;
+
+      signInWithEmailAndPassword(auth, email_1, password_1)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log("logged in")
+
+        const dt = new Date();
+         update(ref(database, 'users/' + user.uid),{
+          last_login: dt,
+        })
+
+         alert('User logged in!');
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        alert(errorMessage);
+  });
+})
+
+/* const user = auth.currentUser;
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    //bla bla bla
+    // ...
+  } else {
+    // User is signed out
+    // ...
+    //bla bla bla
+  }
+});
+
+logout.addEventListener('click',(e)=>{
+
+   signOut(auth).then(() => {
+     // Sign-out successful.
+     alert('user loged out');
+   }).catch((error) => {
+     // An error happened.
+     const errorCode = error.code;
+     const errorMessage = error.message;
+
+        alert(errorMessage);
+   });
+
+}); */
+</script>
+
+</html>>
