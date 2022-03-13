@@ -39,6 +39,7 @@ nav{
     width: 50%;/*space between links specified*/
     list-style: none;/*removes bullet point on headings*/
     padding-top: 1vh;
+    margin-left: 25%;
 }
 
 .nav-links a{
