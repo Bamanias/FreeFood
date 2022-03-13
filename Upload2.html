@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Upload and Retrive info</title>
+<link rel="stylesheet" href="Upload2.css">
+
+<nav>
+    <div class="nav-links">
+        <a href="signup.html">HOME</a>
+        <a href="Upload.html">UPLOAD ITEM</a>
+        <a href="Products.html">PRODUCTS</a><!--creates nav link to internal page remeber # and then id name-->
+        <a href="About.html">ABOUT</a>
+        <a href="#">MESSAGES</a>
+    </div>
+</nav>
+</head>
+
+<body>
+  
+<div id="login-box">
+  <div class="form">
+    <h1 id='status'>Upload</h1>
+    <input type="text" id="foodName" name="foodName" placeholder="Name of food" />
+    <input type="date" id="expiryDate" name="expiryDate" placeholder="Expiry Date" />
+    <input type="text" id="description" name="description" placeholder="Description" />
+    <input type="string" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" />
+    
+    
+    
+    <input type="file" name="file" id="file" class="inputFile" accept="image/*">
+    <label for="file">
+      Choose an Image
+    </label>
+    <div class="image-preview" id="imagePreview">
+      <img src="" alt="Image Preview" class="image-preview__image">
+      <span class="image-preview__default-text">Image Preview</span>
+    </div>
+    
+    
+    
+    
+    <input type="submit" id='upload' name="upload_submit" value="Upload" />
+   
+
+  </div>
+  
+  
+</div>
+</body>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+    import { getDatabase, set, ref, push, child } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyA_4frGWPgbRUiSVmQ0g9arpURi1xjbJQU",
+    authDomain: "food-b4a64.firebaseapp.com",
+    projectId: "food-b4a64",
+    storageBucket: "food-b4a64.appspot.com",
+    messagingSenderId: "767952938951",
+    appId: "1:767952938951:web:8772986cdfd53afb079be2"
+  };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+  
+
+  // write data
+  upload.addEventListener('click',(e) => {
+    var foodName = document.getElementById('foodName').value;
+    var description = document.getElementById('description').value;
+    var expiryDate = document.getElementById('expiryDate').value;
+    var phoneNumber = document.getElementById('phoneNumber').value;    
+
+    const userId = push(child(ref(database), 'food')).key;
+   
+    set(ref(database, 'food/' + userId), {
+      foodName: foodName,
+      expiryDate: expiryDate,
+      description: description,
+      phoneNumber: phoneNumber
+   });
+   alert('Food Uploaded');
+ 
+
+});
+</script>
+
+
+
+
+<script>
+  const inpFile = document.getElementById('file');
+  const previewContainer = document.getElementById('imagePreview');
+  const previewImage = previewContainer.querySelector('.image-preview__image');
+  const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
+
+  inpFile.addEventListener("change", function(){/*allows file chooser to open*/
+          const file = this.files[0];
+
+          if (file){
+              const reader = new FileReader();
+
+              previewDefaultText.style.display = 'none';
+              previewImage.style.display = 'block';
+              
+              reader.addEventListener("load", function(){
+                  previewImage.setAttribute("src", this.result);
+              });
+
+              reader.readAsDataURL(file);
+              
+          }else{/*if no file choosen*/
+              previewDefaultText.style.display = null;
+              previewImage.style.display = null;
+              previewImage.setAttribute("src", "");
+          }
+
+  });
+</script>
+
+</html>>
