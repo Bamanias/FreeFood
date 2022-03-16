@@ -75,7 +75,7 @@ createUserWithEmailAndPassword(auth, email, password)
       email: email
     });
     alert('user created!');
-    
+    window.location.replace("./login.html");
     // ...
   })
   .catch((error) => {
